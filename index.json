@@ -1,0 +1,17 @@
+{
+  "articles/GameDesign.html": {
+    "href": "articles/GameDesign.html",
+    "title": "Game Design",
+    "keywords": "Game Design flowchart TD classDef exit fill:#ffeeee classDef loot fill:#eeffee classDef dialog fill:#eeeeff subgraph Shack Start InstallDogDoor:::exit end subgraph Backyard FindDogDoor:::loot CarryDogDoorHome end subgraph Garden OpenDoor:::exit MeetMia:::dialog AskMiaForHelp:::dialog ExamineDoor end subgraph City DoStuff end Start-->FindDogDoor InstallDogDoor-->Garden FindDogDoor-->CarryDogDoorHome CarryDogDoorHome-->InstallDogDoor ExamineDoor-->AskMiaForHelp AskMiaForHelp-->OpenDoor MeetMia-->AskMiaForHelp OpenDoor-->City"
+  },
+  "articles/index.html": {
+    "href": "articles/index.html",
+    "title": "Introduction",
+    "keywords": "Introduction"
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "RacoonGame",
+    "keywords": "RacoonGame"
+  }
+}
