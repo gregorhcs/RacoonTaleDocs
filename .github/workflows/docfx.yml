@@ -15,10 +15,10 @@ jobs:
     - uses: nikeee/docfx-action@v1.0.0
       name: Build Documentation
       with:
-        args: Documentation/docfx.json
+        args: docfx.json
         
     - uses: peaceiris/actions-gh-pages@v3
       name: Deploy Documentation
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: Documentation/html
+        publish_dir: html
