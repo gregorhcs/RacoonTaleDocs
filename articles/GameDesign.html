@@ -93,19 +93,27 @@
 <h1 id="game-design">Game Design</h1>
 
 <pre><code class="lang-mermaid">flowchart TD
-    classDef exit fill:#ffeeee
-    classDef loot fill:#eeffee
-    classDef dialog fill:#eeeeff
+    classDef exit fill:#fdd
+    classDef loot fill:#dfd
+    classDef dialog fill:#ddf
+    classDef tech fill:#dff
 
 	subgraph Shack
         Start
-		InstallDogDoor:::exit
+		InstallWalkthrough
+		InstallCoin
+		InstallNewspaperKey
+        CanMoveStuff:::tech
+		MoveBoxFromDoor:::exit
 	end
 	
 	subgraph Backyard
-		FindDogDoor:::loot
-	
-		CarryDogDoorHome
+		FindCoin:::loot
+		FindWalkthrough:::loot
+        FindNewspaperKey:::loot
+        UseCoinInNewspaperDispenser
+		MoveBoxToNewspaperDispenser
+        UseKeyInNewspaperDispenser
 	end
 	
 	subgraph Garden
@@ -121,13 +129,19 @@
 		DoStuff
 	end
 
-    Start--&gt;FindDogDoor
+    Start--&gt;FindCoin
+    Start--&gt;FindNewspaperKey
 
-    InstallDogDoor--&gt;Garden
-
-    FindDogDoor--&gt;CarryDogDoorHome
-
-    CarryDogDoorHome--&gt;InstallDogDoor
+    FindNewspaperKey&lt;--&gt;InstallNewspaperKey
+    FindCoin&lt;--&gt;InstallCoin
+    FindCoin--&gt;UseCoinInNewspaperDispenser
+    UseCoinInNewspaperDispenser--&gt;FindWalkthrough
+    FindWalkthrough--&gt;InstallWalkthrough
+    InstallWalkthrough--&gt;CanMoveStuff
+    CanMoveStuff--&gt;MoveBoxFromDoor
+    CanMoveStuff--&gt;MoveBoxToNewspaperDispenser
+    FindNewspaperKey--&gt;UseKeyInNewspaperDispenser
+    MoveBoxToNewspaperDispenser--&gt;UseKeyInNewspaperDispenser
 
     ExamineDoor--&gt;AskMiaForHelp	
     AskMiaForHelp--&gt;OpenDoor
