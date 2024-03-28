@@ -13,5 +13,10 @@
     "href": "index.html",
     "title": "RacoonGame",
     "keywords": "RacoonGame"
+  },
+  "README.html": {
+    "href": "README.html",
+    "title": "",
+    "keywords": ""
   }
 }
