@@ -1,17 +1,25 @@
 flowchart TD
-    classDef exit fill:#ffeeee
-    classDef loot fill:#eeffee
-    classDef dialog fill:#eeeeff
+    classDef exit fill:#fdd
+    classDef loot fill:#dfd
+    classDef dialog fill:#ddf
+    classDef tech fill:#dff
 
 	subgraph Shack
         Start
-		InstallDogDoor:::exit
+		InstallWalkthrough
+		InstallCoin
+		InstallNewspaperKey
+        CanMoveStuff:::tech
+		MoveBoxFromDoor:::exit
 	end
 	
 	subgraph Backyard
-		FindDogDoor:::loot
-	
-		CarryDogDoorHome
+		FindCoin:::loot
+		FindWalkthrough:::loot
+        FindNewspaperKey:::loot
+        UseCoinInNewspaperDispenser
+		MoveBoxToNewspaperDispenser
+        UseKeyInNewspaperDispenser
 	end
 	
 	subgraph Garden
@@ -27,13 +35,19 @@ flowchart TD
 		DoStuff
 	end
 
-    Start-->FindDogDoor
+    Start-->FindCoin
+    Start-->FindNewspaperKey
 
-    InstallDogDoor-->Garden
-
-    FindDogDoor-->CarryDogDoorHome
-
-    CarryDogDoorHome-->InstallDogDoor
+    FindNewspaperKey<-->InstallNewspaperKey
+    FindCoin<-->InstallCoin
+    FindCoin-->UseCoinInNewspaperDispenser
+    UseCoinInNewspaperDispenser-->FindWalkthrough
+    FindWalkthrough-->InstallWalkthrough
+    InstallWalkthrough-->CanMoveStuff
+    CanMoveStuff-->MoveBoxFromDoor
+    CanMoveStuff-->MoveBoxToNewspaperDispenser
+    FindNewspaperKey-->UseKeyInNewspaperDispenser
+    MoveBoxToNewspaperDispenser-->UseKeyInNewspaperDispenser
 
     ExamineDoor-->AskMiaForHelp	
     AskMiaForHelp-->OpenDoor
