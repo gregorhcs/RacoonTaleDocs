@@ -135,13 +135,26 @@
 	LowClimbing--&gt;HighClimbing
     
     subgraph World State
-        MiaIsAway:::start
+        Home:::start
+		
+		MiaIsAway:::start
 		MiaIsInGarden
 		MiaIsHome
+		
+		PenguinsAtConvention:::start
+		PenguinsSearchingForBriefcase
+		
+		HomeDestroyed
 	end
 	
 	MiaIsAway--&gt;MiaIsInGarden
 	MiaIsInGarden--&gt;MiaIsHome
+	MiaIsHome--&gt;HomeDestroyed
+	
+	Home--&gt;HomeDestroyed
+	
+	PenguinsAtConvention--&gt;PenguinsSearchingForBriefcase
+	PenguinsSearchingForBriefcase--&gt;HomeDestroyed
 </code></pre><h2 id="tutorial">Tutorial</h2>
 <pre><code class="lang-mermaid">flowchart TD
     classDef exit fill:#fdd
