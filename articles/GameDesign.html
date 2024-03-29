@@ -103,8 +103,8 @@
         WalkingOnTwo
         Running:::start
         Interacting:::start
-        CarryingLightObjects
-        CarryingHeavyObjects
+        CarryingSmallObjects
+        CarryingBigObjects
         
         Rolling
         LowClimbing
@@ -121,18 +121,27 @@
 	Idling--&gt;WalkingOnFour
 	Idling--&gt;Interacting
 	Running--&gt;Rolling
-	Interacting--&gt;CarryingLightObjects
-	CarryingLightObjects--&gt;CarryingHeavyObjects
-    WalkingOnTwo--&gt;CarryingHeavyObjects
+	Interacting--&gt;CarryingSmallObjects
+	CarryingSmallObjects--&gt;CarryingBigObjects
+    WalkingOnTwo--&gt;CarryingBigObjects
     WalkingOnTwo--&gt;MovingLightObjects
     WalkingOnTwo--&gt;MovingHeavyObjects
 	Interacting--&gt;MovingLightObjects
 	MovingLightObjects--&gt;MovingHeavyObjects
 	Interacting--&gt;Digging
     Digging--&gt;Washing
-	CarryingLightObjects--&gt;Washing
+	CarryingSmallObjects--&gt;Washing
 	Interacting--&gt;LowClimbing
 	LowClimbing--&gt;HighClimbing
+    
+    subgraph World State
+        MiaIsAway:::start
+		MiaIsInGarden
+		MiaIsHome
+	end
+	
+	MiaIsAway--&gt;MiaIsInGarden
+	MiaIsInGarden--&gt;MiaIsHome
 </code></pre><h2 id="tutorial">Tutorial</h2>
 <pre><code class="lang-mermaid">flowchart TD
     classDef exit fill:#fdd
