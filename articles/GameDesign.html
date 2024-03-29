@@ -92,13 +92,42 @@
                     <article class="content wrap" id="_content" data-uid="">
 <h1 id="game-design">Game Design</h1>
 
+<h2 id="character-controller">Character Controller</h2>
+<pre><code class="lang-mermaid">flowchart TD
+    classDef start fill:#dfd
+    
+	Idling:::start
+	
+	Walking:::start
+	Running:::start
+	Interacting:::start
+	Carrying:::start
+	
+	Rolling
+	LowClimbing
+	HighClimbing
+	Digging
+	MovingLightObjects
+	MovingHeavyObjects
+	
+	Idling--&gt;Walking
+	Idling--&gt;Interacting
+	Walking--&gt;Running
+	Running--&gt;Rolling
+	Interacting--&gt;Carrying
+	Interacting--&gt;Digging
+	Interacting--&gt;MovingLightObjects
+	Interacting--&gt;MovingHeavyObjects
+	Interacting--&gt;LowClimbing
+	LowClimbing--&gt;HighClimbing
+</code></pre><h2 id="tutorial">Tutorial</h2>
 <pre><code class="lang-mermaid">flowchart TD
     classDef exit fill:#fdd
     classDef loot fill:#dfd
     classDef dialog fill:#ddf
     classDef tech fill:#dff
 
-	subgraph Shack
+	subgraph Home
         Start
 		InstallWalkthrough
 		InstallCoin
