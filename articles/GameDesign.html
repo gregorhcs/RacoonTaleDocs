@@ -96,28 +96,41 @@
 <pre><code class="lang-mermaid">flowchart TD
     classDef start fill:#dfd
     
-	Idling:::start
+    subgraph Character Controller
+        Idling:::start
+        
+        WalkingOnFour:::start
+        WalkingOnTwo
+        Running:::start
+        Interacting:::start
+        CarryingLightObjects
+        CarryingHeavyObjects
+        
+        Rolling
+        LowClimbing
+        HighClimbing
+        Digging
+        MovingLightObjects
+        MovingHeavyObjects
+        Washing
+    end
+
+	WalkingOnFour--&gt;Running
+	WalkingOnFour--&gt;WalkingOnTwo
 	
-	Walking:::start
-	Running:::start
-	Interacting:::start
-	Carrying:::start
-	
-	Rolling
-	LowClimbing
-	HighClimbing
-	Digging
-	MovingLightObjects
-	MovingHeavyObjects
-	
-	Idling--&gt;Walking
+	Idling--&gt;WalkingOnFour
 	Idling--&gt;Interacting
-	Walking--&gt;Running
 	Running--&gt;Rolling
-	Interacting--&gt;Carrying
-	Interacting--&gt;Digging
+	Interacting--&gt;CarryingLightObjects
+	CarryingLightObjects--&gt;CarryingHeavyObjects
+    WalkingOnTwo--&gt;CarryingHeavyObjects
+    WalkingOnTwo--&gt;MovingLightObjects
+    WalkingOnTwo--&gt;MovingHeavyObjects
 	Interacting--&gt;MovingLightObjects
-	Interacting--&gt;MovingHeavyObjects
+	MovingLightObjects--&gt;MovingHeavyObjects
+	Interacting--&gt;Digging
+    Digging--&gt;Washing
+	CarryingLightObjects--&gt;Washing
 	Interacting--&gt;LowClimbing
 	LowClimbing--&gt;HighClimbing
 </code></pre><h2 id="tutorial">Tutorial</h2>
