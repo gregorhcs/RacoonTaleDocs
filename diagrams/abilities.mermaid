@@ -1,27 +1,40 @@
 flowchart TD
     classDef start fill:#dfd
     
-	Idling:::start
+    subgraph Character Controller
+        Idling:::start
+        
+        WalkingOnFour:::start
+        WalkingOnTwo
+        Running:::start
+        Interacting:::start
+        CarryingLightObjects
+        CarryingHeavyObjects
+        
+        Rolling
+        LowClimbing
+        HighClimbing
+        Digging
+        MovingLightObjects
+        MovingHeavyObjects
+        Washing
+    end
+
+	WalkingOnFour-->Running
+	WalkingOnFour-->WalkingOnTwo
 	
-	Walking:::start
-	Running:::start
-	Interacting:::start
-	Carrying:::start
-	
-	Rolling
-	LowClimbing
-	HighClimbing
-	Digging
-	MovingLightObjects
-	MovingHeavyObjects
-	
-	Idling-->Walking
+	Idling-->WalkingOnFour
 	Idling-->Interacting
-	Walking-->Running
 	Running-->Rolling
-	Interacting-->Carrying
-	Interacting-->Digging
+	Interacting-->CarryingLightObjects
+	CarryingLightObjects-->CarryingHeavyObjects
+    WalkingOnTwo-->CarryingHeavyObjects
+    WalkingOnTwo-->MovingLightObjects
+    WalkingOnTwo-->MovingHeavyObjects
 	Interacting-->MovingLightObjects
-	Interacting-->MovingHeavyObjects
+	MovingLightObjects-->MovingHeavyObjects
+	Interacting-->Digging
+    Digging-->Washing
+	CarryingLightObjects-->Washing
 	Interacting-->LowClimbing
 	LowClimbing-->HighClimbing
