@@ -1,0 +1,27 @@
+flowchart TD
+    classDef start fill:#dfd
+    
+	Idling:::start
+	
+	Walking:::start
+	Running:::start
+	Interacting:::start
+	Carrying:::start
+	
+	Rolling
+	LowClimbing
+	HighClimbing
+	Digging
+	MovingLightObjects
+	MovingHeavyObjects
+	
+	Idling-->Walking
+	Idling-->Interacting
+	Walking-->Running
+	Running-->Rolling
+	Interacting-->Carrying
+	Interacting-->Digging
+	Interacting-->MovingLightObjects
+	Interacting-->MovingHeavyObjects
+	Interacting-->LowClimbing
+	LowClimbing-->HighClimbing
