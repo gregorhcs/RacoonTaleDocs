@@ -8,8 +8,8 @@ flowchart TD
         WalkingOnTwo
         Running:::start
         Interacting:::start
-        CarryingLightObjects
-        CarryingHeavyObjects
+        CarryingSmallObjects
+        CarryingBigObjects
         
         Rolling
         LowClimbing
@@ -26,15 +26,24 @@ flowchart TD
 	Idling-->WalkingOnFour
 	Idling-->Interacting
 	Running-->Rolling
-	Interacting-->CarryingLightObjects
-	CarryingLightObjects-->CarryingHeavyObjects
-    WalkingOnTwo-->CarryingHeavyObjects
+	Interacting-->CarryingSmallObjects
+	CarryingSmallObjects-->CarryingBigObjects
+    WalkingOnTwo-->CarryingBigObjects
     WalkingOnTwo-->MovingLightObjects
     WalkingOnTwo-->MovingHeavyObjects
 	Interacting-->MovingLightObjects
 	MovingLightObjects-->MovingHeavyObjects
 	Interacting-->Digging
     Digging-->Washing
-	CarryingLightObjects-->Washing
+	CarryingSmallObjects-->Washing
 	Interacting-->LowClimbing
 	LowClimbing-->HighClimbing
+    
+    subgraph World State
+        MiaIsAway:::start
+		MiaIsInGarden
+		MiaIsHome
+	end
+	
+	MiaIsAway-->MiaIsInGarden
+	MiaIsInGarden-->MiaIsHome
