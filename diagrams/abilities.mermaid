@@ -40,10 +40,23 @@ flowchart TD
 	LowClimbing-->HighClimbing
     
     subgraph World State
-        MiaIsAway:::start
+        Home:::start
+		
+		MiaIsAway:::start
 		MiaIsInGarden
 		MiaIsHome
+		
+		PenguinsAtConvention:::start
+		PenguinsSearchingForBriefcase
+		
+		HomeDestroyed
 	end
 	
 	MiaIsAway-->MiaIsInGarden
 	MiaIsInGarden-->MiaIsHome
+	MiaIsHome-->HomeDestroyed
+	
+	Home-->HomeDestroyed
+	
+	PenguinsAtConvention-->PenguinsSearchingForBriefcase
+	PenguinsSearchingForBriefcase-->HomeDestroyed
